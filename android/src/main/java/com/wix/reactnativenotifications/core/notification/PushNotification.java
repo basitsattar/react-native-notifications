@@ -79,7 +79,7 @@ public class PushNotification implements IPushNotification {
         }else{
             Bundle notification = mNotificationProps.asBundle();
             String forceStartApp = notification.getString("forceStartApp");
-            if(forceStartApp.equals("yes")){
+            if(forceStartApp.equals("true")){
                 digestNotification();
             }
         }
