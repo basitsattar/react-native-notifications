@@ -76,6 +76,12 @@ public class PushNotification implements IPushNotification {
         notifyReceivedToJS();
         if (mAppLifecycleFacade.isAppVisible()) {
             notifiyReceivedForegroundNotificationToJS();
+        }else{
+            Bundle notification = mNotificationProps.asBundle();
+            String forceStartApp = notification.getString("forceStartApp");
+            if(forceStartApp.equals("yes")){
+                digestNotification();
+            }
         }
     }
 
