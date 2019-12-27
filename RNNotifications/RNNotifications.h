@@ -1,11 +1,18 @@
 @import UIKit;
-
-#import <React/RCTBridgeModule.h>
 #import <PushKit/PushKit.h>
-#import "RNNRouter.h"
-#import <React/RCTEventEmitter.h>
+@import UserNotifications;
 
+@interface RNNotifications : NSObject
 
-@interface RNNotifications : RCTEventEmitter <RCTBridgeModule, RNNRerouterDelegate>
-+ (NSString *)deviceTokenToString:(NSData *)deviceToken;
++ (instancetype)sharedInstance;
+
++ (void)startMonitorNotifications;
++ (void)startMonitorPushKitNotifications;
+
++ (void)didRegisterForRemoteNotificationsWithDeviceToken:(id)deviceToken;
++ (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+
++ (void)addNativeDelegate:(id<UNUserNotificationCenterDelegate>)delegate;
++ (void)removeNativeDelegate:(id<UNUserNotificationCenterDelegate>)delegate;
+
 @end
